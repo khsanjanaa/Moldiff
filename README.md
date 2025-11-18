@@ -29,3 +29,26 @@ pipeline {
         }
     }
 }
+
+
+SCRIPTED PIPELINE:
+node {
+    stage('Checkout Source') {
+        git url: 'https://github.com/savraam674/MavenJavaDemo.git', branch: 'master'
+    }
+
+    stage('Build') {
+        echo "Running Maven Clean Install"
+        bat "mvn clean install"
+    }
+
+    stage('Test') {
+        echo "Running Maven Tests"
+        bat "mvn test"
+    }
+
+    stage('Deploy') {
+        echo "Deploy step (For Assignment Purpose Only)"
+        echo "Deployment completed successfully!"
+    }
+}
